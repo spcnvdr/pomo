@@ -6,7 +6,6 @@ const Timer = (props) => {
     const [inWork, setInWork] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [rounds, setRounds] = useState(0);
-    let interval = null;
 
     const formatSeconds = (seconds) => {
         var date = new Date(0);
@@ -20,6 +19,7 @@ const Timer = (props) => {
     }
 
     useEffect(() => {
+        let interval = null;
         if(isActive) {
             if(seconds > 0) {
                 interval = setInterval(() => {
