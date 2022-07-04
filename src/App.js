@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import './index.css';
 import Timer from './components/timer';
+import './index.css';
+
 
 const App = () => {
     const [workMin, setWorkMin] = useState("25");
@@ -11,19 +12,23 @@ const App = () => {
         <div>
             <div className='container'>
                 <div className='row'>
-                    <div className='column-25'>
+                    <div className='column'>
                         <label>Work Time</label>
-                        <input type='number' value={workMin} onChange={e => {setWorkMin(e.target.value)}} />
+                        <input className='pomo-input' type='number' value={workMin} onChange={e => {setWorkMin(e.target.value)}} />
                     </div>
-                    <div className='column-25'>
+                    <div className='column'>
                         <label>Rest Time</label>
                         <input type='number' value={restMin} onChange={e => {setRestMin(e.target.value)}} />
                     </div>
+                    <div className='column'></div><div className='column'></div>
                 </div>
                 <div className='row'>
-                    <button onClick={() => {setBegin(!begin)}}>{begin ? ('Stop Timer') : ('Start Timer')}</button>
+                    <div className='column'>
+                    <button className='button' onClick={() => {setBegin(!begin)}}>{begin ? ('Stop Timer') : ('Start Timer')}</button>
+                    </div>
                 </div>
             </div>
+            <div className='row'></div>
             {begin ? (<Timer work={workMin} rest={restMin} />) : (<div></div>)}
         </div>
     )

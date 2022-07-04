@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
+  color: #eeeeee;
+}
+
+input[type='number'] {
+  background-color: #1f1f1f;
+  color: #eeeeee;
+  font-weight: 600;
 }
 
 code {
@@ -25,3 +33,4 @@ code {
   align-items: center;
   justify-content: center;
 }
+/* 1f1f1f1f */

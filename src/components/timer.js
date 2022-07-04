@@ -14,38 +14,43 @@ const Timer = (props) => {
         return timeString;
     }
 
+    const count = () => {
+        if(seconds > 0) {
+            setSeconds(seconds => seconds - 1);
+        } else {
+            setIsActive(!isActive);
+            setInWork(!inWork);
+            setRounds(rounds + 1);
+            console.log(rounds);
+            if(rounds >= 6) {
+                setRounds(0);
+                setSeconds(props.rest * 3);
+            } else {
+                setSeconds(inWork ? props.work : props.rest);
+            }
+        }
+    }
+
     useEffect(() => {
         let interval = null;
         if(isActive) {
             interval = setInterval(() => {
-                if(seconds > 0) {
-                    setSeconds(seconds => seconds - 1);
-                } else {
-                    setIsActive(!isActive);
-                    clearInterval(interval);
-                    setInWork(!inWork);
-                    setRounds(rounds + 1);
-                    console.log(rounds);
-                    if(rounds >= 6) {
-                        setRounds(0);
-                        setSeconds(props.rest * 3);
-                    } else {
-                        setSeconds(inWork ? props.work : props.rest);
-                    }
-                }
+                // do not automatically start the next round
+                (seconds <= 0 && clearInterval(interval));
+                count();
             }, 1000);
         } else if (!isActive && seconds !== 0) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds, rounds, inWork, props.work, props.rest]);
+    });
 
     return (
         <div className='container'>
             <div className='row center-div'>
-                <h2>
+                <h1>
                     {formatSeconds(seconds)}
-                </h2>
+                </h1>
             </div>                
             <div className='row center-div'>
                 <button onClick={() => {setIsActive(!isActive);}}>
