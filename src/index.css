@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Custom size */
+.button-small {
+  font-size: .8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  padding: 0 1.5rem;
+}
+
+.center-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

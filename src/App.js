@@ -46,12 +46,12 @@ const Timer = (props) => {
 
     return (
         <div className='container'>
-            <div className='row time'>
+            <div className='row center-div'>
                 <h2>
                     {formatSeconds(seconds)}
                 </h2>
             </div>                
-            <div className='row time'>
+            <div className='row center-div'>
                 <button onClick={toggle}>
                     {isActive ? (String.fromCodePoint(0x23F8)) : (String.fromCodePoint(0x25B6))}
                 </button>
