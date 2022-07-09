@@ -1,11 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useRef, useReducer} from 'react';
 import '../index.css';
 
+
 const Timer = (props) => {
-    const [seconds, setSeconds] = useState(props.work);
-    const [inWork, setInWork] = useState(false);
-    const [isActive, setIsActive] = useState(false);
-    const [rounds, setRounds] = useState(0);
+    const initialState = {
+        inWork: false,
+        isActive: false,
+        restLength: props.rest,
+        rounds: 0,
+        seconds: props.work,
+        workLength: props.work
+    };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const interval = useRef(0);
 
     const formatSeconds = (seconds) => {
         var date = new Date(0);
@@ -14,51 +22,56 @@ const Timer = (props) => {
         return timeString;
     }
 
-    const count = () => {
-        if(seconds > 0) {
-            setSeconds(seconds => seconds - 1);
-        } else {
-            setIsActive(!isActive);
-            setInWork(!inWork);
-            setRounds(rounds + 1);
-            console.log(rounds);
-            if(rounds >= 6) {
-                setRounds(0);
-                setSeconds(props.rest * 3);
-            } else {
-                setSeconds(inWork ? props.work : props.rest);
-            }
-        }
-    }
-
     useEffect(() => {
-        let interval = null;
-        if(isActive) {
-            interval = setInterval(() => {
-                // do not automatically start the next round
-                (seconds <= 0 && clearInterval(interval));
-                count();
-            }, 1000);
-        } else if (!isActive && seconds !== 0) {
-            clearInterval(interval);
+        if (!state.isActive){
+            return;
         }
-        return () => clearInterval(interval);
-    });
+        
+        interval.current = setInterval(() => dispatch({type: "tick"}), 1000);
+
+        return () => {
+            clearInterval(interval.current)
+            interval.current = 0;
+        }
+    }, [state.isActive]);
 
     return (
         <div className='container'>
             <div className='row center-div'>
                 <h1>
-                    {formatSeconds(seconds)}
+                    {formatSeconds(state.seconds)}
                 </h1>
             </div>                
             <div className='row center-div'>
-                <button onClick={() => {setIsActive(!isActive);}}>
-                    {isActive ? (String.fromCodePoint(0x23F8)) : (String.fromCodePoint(0x25B6))}
+                <button onClick={() => dispatch({type: "toggle"})}>
+                    {state.isActive ? (String.fromCodePoint(0x23F8)) : (String.fromCodePoint(0x25B6))}
                 </button>
             </div>
         </div>
     )
 }
+
+
+function reducer(state, action) {
+    switch (action.type) {
+      case "toggle":
+        return { ...state, isActive: !state.isActive };
+      case "tick":
+        if (state.seconds > 0){
+            return { ...state, seconds: state.seconds - 1 };
+        } else {
+            if (state.rounds >= 6) {
+                return { ...state, isActive: !state.isActive, inWork: !state.inWork,
+                    rounds: -1, seconds: state.restLength * 3};
+            } else {
+                let s = state.inWork ? state.workLength : state.restLength;
+                return { ...state, isActive: !state.isActive, inWork: !state.inWork,
+            rounds: state.rounds + 1, seconds: s};
+            }
+        }
+      default:
+        throw new Error();
+    }
+  }
 
 export default Timer
