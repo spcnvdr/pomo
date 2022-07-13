@@ -7,6 +7,7 @@ const App = () => {
     const [workMin, setWorkMin] = useState("25");
     const [restMin, setRestMin] = useState("5");
     const [begin, setBegin] = useState(false);
+    const [sound, setSound] = useState(true);
 
     return (
         <div>
@@ -24,12 +25,16 @@ const App = () => {
                 </div>
                 <div className='row'>
                     <div className='column'>
-                    <button className='button' onClick={() => {setBegin(!begin)}}>{begin ? ('Stop Timer') : ('Start Timer')}</button>
+                        <button className='button' onClick={() => {setBegin(!begin)}}>{begin ? ('Stop Timer') : ('Start Timer')}</button>
+                        <button className='button' onClick={() => {setSound(!sound)}}>{sound ? String.fromCodePoint(0x1F514) : String.fromCodePoint(0x1F515)}</button>
+                    </div>
+                    <div className='column'>
+                        
                     </div>
                 </div>
             </div>
             <div className='row'></div>
-            {begin ? (<Timer work={workMin} rest={restMin} />) : (<div></div>)}
+            {begin ? (<Timer work={workMin} rest={restMin} sound={sound} />) : (<div></div>)}
         </div>
     )
 }

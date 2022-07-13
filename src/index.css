@@ -5,19 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212;
+  background-color: #31363b;
   color: #eeeeee;
 }
 
+label {
+  font-weight: 500;
+}
+
 input[type='number'] {
-  background-color: #1f1f1f;
-  color: #eeeeee;
+  background-color: #212529;
+  border-color: #4b5056;
+  color: #F1F3F5;
   font-weight: 600;
+}
+
+h1 {
+  color: #F1F3F5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.button {
+  margin: 5px;
 }
 
 /* Custom size */
@@ -26,6 +39,11 @@ code {
   height: 2.8rem;
   line-height: 2.8rem;
   padding: 0 1.5rem;
+}
+
+.button:hover, .button:focus {
+  background-color: #A166C6;
+  border-color: #A166C6;
 }
 
 .center-div {

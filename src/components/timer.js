@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useReducer} from 'react';
 import '../index.css';
+import alarm from "./alarm.mp3"
 
 
 const Timer = (props) => {
@@ -9,6 +10,7 @@ const Timer = (props) => {
         restLength: props.rest,
         rounds: 0,
         seconds: props.work,
+        sound: props.sound,
         workLength: props.work
     };
 
@@ -43,7 +45,7 @@ const Timer = (props) => {
                 </h1>
             </div>                
             <div className='row center-div'>
-                <button onClick={() => dispatch({type: "toggle"})}>
+                <button className='button' onClick={() => dispatch({type: "toggle"})}>
                     {state.isActive ? (String.fromCodePoint(0x23F8)) : (String.fromCodePoint(0x25B6))}
                 </button>
             </div>
@@ -51,6 +53,10 @@ const Timer = (props) => {
     )
 }
 
+const playSound = () => {
+    var audio = new Audio(alarm);
+    audio.play();
+}
 
 function reducer(state, action) {
     switch (action.type) {
@@ -60,6 +66,7 @@ function reducer(state, action) {
         if (state.seconds > 0){
             return { ...state, seconds: state.seconds - 1 };
         } else {
+            (state.sound && playSound())
             if (state.rounds >= 6) {
                 return { ...state, isActive: !state.isActive, inWork: !state.inWork,
                     rounds: -1, seconds: state.restLength * 3};
