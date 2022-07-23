@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import Timer from './components/timer';
 import './index.css';
 
@@ -26,15 +28,13 @@ const App = () => {
                 <div className='row'>
                     <div className='column'>
                         <button className='button' onClick={() => {setBegin(!begin)}}>{begin ? ('Stop Timer') : ('Start Timer')}</button>
-                        <button className='button' onClick={() => {setSound(!sound)}}>{sound ? String.fromCodePoint(0x1F514) : String.fromCodePoint(0x1F515)}</button>
+                        <button className='button' title='beep when timer ends' onClick={() => {setSound(!sound)}}>{sound ? <FontAwesomeIcon icon={faVolumeUp} size="lg" /> : <FontAwesomeIcon icon={faVolumeMute} size="lg" />}</button>
                     </div>
-                    <div className='column'>
-                        
-                    </div>
+                    <div className='column'></div>
                 </div>
             </div>
             <div className='row'></div>
-            {begin ? (<Timer work={workMin} rest={restMin} sound={sound} />) : (<div></div>)}
+            {begin ? (<Timer work={workMin * 60} rest={restMin * 60} sound={sound} />) : (<div></div>)}
         </div>
     )
 }

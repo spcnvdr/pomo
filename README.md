@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Pomo - A simple Pomodoro Timer in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my first attempt at learning React. This is meant to be a simple 
+Pomodoro timer and was created with the 'create-react-app' command. The 
+Pomodoro Technique is a time management method developed by Francesco Cirillo 
+in the late 1980s.[1] It uses a kitchen timer to break work into ntervals, 
+typically 25 minutes in length, separated by short breaks. This app lets you 
+configure the length of the work interval, the length of the rest interval, 
+and whether or not to play a sound at the end of an interval. I am not a web 
+designer or developer so the interface and code needs work.
 
-## Available Scripts
+**Getting Started**
 
-In the project directory, you can run:
+Get a copy of the source code via git
 
-### `npm start`
+    git clone https://github.com/spcnvdr/pomo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Change into the project directory
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    cd pomo
 
-### `npm test`
+Install the NPM dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    npm i
 
-### `npm run build`
+Start the server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Now navigate to http://localhost:3000/ to use the app!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+**Screenshot**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Pomo Timer App](./img/screen.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Contributing**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Pull requests, new feature suggestions, and bug reports/issues are
+welcome.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+**License**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is licensed under the 3-Clause BSD License also known as the
+*"New BSD License"* or the *"Modified BSD License"*. A copy of the license
+can be found in the LICENSE file. A copy can also be found at the
+[Open Source Institute](https://opensource.org/licenses/BSD-3-Clause)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

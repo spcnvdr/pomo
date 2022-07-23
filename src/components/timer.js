@@ -1,4 +1,6 @@
 import React, {useEffect, useRef, useReducer} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 import '../index.css';
 import alarm from "./alarm.mp3"
 
@@ -46,7 +48,7 @@ const Timer = (props) => {
             </div>                
             <div className='row center-div'>
                 <button className='button' onClick={() => dispatch({type: "toggle"})}>
-                    {state.isActive ? (String.fromCodePoint(0x23F8)) : (String.fromCodePoint(0x25B6))}
+                    {state.isActive ? <FontAwesomeIcon icon={faPause} size="lg" /> : <FontAwesomeIcon icon={faPlay} size="lg" />}
                 </button>
             </div>
         </div>
