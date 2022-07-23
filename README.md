@@ -32,7 +32,7 @@ Now navigate to http://localhost:3000/ to use the app!
 
 **Screenshot**
 
-![Pomo Timer App](./img/screen.png)
+![Pomo Timer App](./screen.png)
 
 **Contributing**
 
